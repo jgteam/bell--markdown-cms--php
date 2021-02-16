@@ -1,0 +1,26 @@
+RewriteEngine On
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+# Fixed Page URLs
+RewriteRule mywork ./index.php?fixedpage=mywork [NC,L]
+RewriteRule contact ./index.php?fixedpage=contact [NC,L]
+RewriteRule privacy-policy ./index.php?fixedpage=privacy-policy [NC,L]
+RewriteRule legal-notice ./index.php?fixedpage=legal-notice [NC,L]
+
+
+# Rewrite/Overwrite for assets
+RewriteRule ^page/assets/(.*)$ ./assets/$1 [NC,L]
+RewriteRule ^project/assets/(.*)$ ./assets/$1 [NC,L]
+
+# Rewrite/Overwrite for usercontent
+RewriteRule ^page/usercontent/(.*)$ ./usercontent/$1 [NC,L]
+RewriteRule ^project/usercontent/(.*)$ ./usercontent/$1 [NC,L]
+
+# Custom Page URLs
+RewriteRule ^page/(.*)$ ./index.php?custompage=$1 [NC,L]
+RewriteRule ^project/(.*)$ ./index.php?customproject=$1 [NC,L]
+
+# Redirects
+RewriteRule ^open/(.*)$ ./index.php?open=$1 [NC,L]
