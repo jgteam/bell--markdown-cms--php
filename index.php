@@ -78,7 +78,7 @@ $headTitle = getConfigValue("headtitle");
 $pageTitleMeta = $headTitle;
 if($pageType != "home") {
 
-    $pageTitleMeta = $headTitle." — " . $pageTitle;
+    $pageTitleMeta = $headTitle . " — " . $pageTitle;
 
 }
 
@@ -111,7 +111,7 @@ if($pageType != "home") {
 
 
 
-        <link rel="stylesheet" type="text/css" href="assets/style/app.css"/>
+        <link rel="stylesheet" type="text/css" href="<?=ROOT?>assets/style/app.css"/>
         <title><?=$pageTitleMeta?></title>
 
     </head>

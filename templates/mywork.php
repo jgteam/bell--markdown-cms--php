@@ -12,9 +12,7 @@
 
                 <?php
 
-                foreach (getAllProjects() as $projectFileName) {
-                    projectCard($projectFileName['fileName']);
-                }
+                printProjectCardGalleryHere();
 
                 ?>
 

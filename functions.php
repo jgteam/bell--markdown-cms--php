@@ -65,7 +65,7 @@ function openPage($folder, $name){
     // 15 => "[DOCUMENTSTART]"
     $startPosition = $matches[0][1] + 15;
 
-    // REMOVEING HEAD
+    // REMOVING HEAD
     $fileBody = substr($fileContent, $startPosition);
 
 
@@ -79,14 +79,16 @@ function openPage($folder, $name){
     // GET FILE ELEMENTS
 
     preg_match_all("/\[ACTION\](.*)\[\/ACTION\]/sU", $fileContent, $matches, PREG_OFFSET_CAPTURE);
+
+    // 1 => only get inner Text
     $fileElements = $matches[1];
 
+    // getting only text, removing position
     $newFileElementArray = Array();
     foreach ($fileElements as $element) {
         $newFileElementArray[] = $element[0];
     }
     $fileElements = $newFileElementArray;
-
 
 }
 
@@ -311,6 +313,14 @@ function printHeaderMenuHere() {
 
         echo '<a class="anchor-button" href="'.$menuItem["href"].'">'.$menuItem['text'].'</a>';
 
+    }
+
+}
+
+function printProjectCardGalleryHere() {
+
+    foreach (getAllProjects() as $projectFileName) {
+        projectCard($projectFileName['fileName']);
     }
 
 }

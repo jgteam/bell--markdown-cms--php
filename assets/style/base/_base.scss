@@ -94,6 +94,18 @@ h1, h2, h3, h4 {
 
 }
 
+h3 {
+
+  font-size: $h3FontSize;
+
+}
+
+h4 {
+
+  font-size: $h4FontSize;
+
+}
+
 h1 {
 
   font-size: $h1FontSize;
@@ -119,6 +131,10 @@ body.page--article main, body.page--legal main, body.page--contact main, body.pa
       padding: 10px;
       background-color: rgba(0, 0, 0, 0.1);
       border-radius: 4px;
+
+      width: 100%;
+
+      max-width: 850px;
 
     }
 
