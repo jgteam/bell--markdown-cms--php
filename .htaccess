@@ -24,3 +24,10 @@ RewriteRule ^project/(.*)$ ./index.php?customproject=$1 [NC,L]
 
 # Redirects
 RewriteRule ^open/(.*)$ ./index.php?open=$1 [NC,L]
+
+
+# Zugriff auf Markdown und Config Dateien verweigern
+<FilesMatch "\.(md|conf)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

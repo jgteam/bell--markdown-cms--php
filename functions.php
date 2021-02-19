@@ -160,7 +160,7 @@ function getConfigValue($key) {
 
 function getAllProjects() {
 
-    // Alle Dateienamen aus dem Ordner holen
+    // Alle Dateinamen aus dem Ordner holen
     $files = scandir("./usercontent/projects/");
     // "." und ".." entfernen
     $files = array_slice($files, 2);
