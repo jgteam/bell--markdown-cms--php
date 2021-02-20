@@ -193,6 +193,7 @@ function getAllProjects() {
 
         $filePath = "./usercontent/projects/" . $file;
 
+        // Datum auslesen
         $fileDate =  getAttribute("Date", file_get_contents($filePath));
         $filesWithDates[] = Array(
             'fileName' => $file,
@@ -312,7 +313,7 @@ function readMenuConfig() {
 
     $menuConfigFile = "./usercontent/config/menu.conf";
 
-    // List die Datei Zeile für Zeile ein
+    // Liest die Datei Zeile für Zeile ein
     // https://stackoverflow.com/a/13246630
     $handle = fopen($menuConfigFile, "r");
     if ($handle) {
