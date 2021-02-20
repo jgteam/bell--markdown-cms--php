@@ -360,7 +360,7 @@ function printHeaderMenuHere() {
 
 }
 
-// Druckt die Projekt-Galerie
+// Druckt die Projekt-Galerie an dieser Stelle
 function printProjectCardGalleryHere() {
 
     // ... für alle Projekte
