@@ -7,7 +7,7 @@ define("ROOT", getConfigValue("ROOT"));
 // Das verhindert aussetzungen des Head-Parsers durch zu lange Zeichenketten.
 define("MAX_DOCUMENT_HEAD_LENGTH", 1000);
 
-// Einbindung bon Parsedown.php
+// Einbindung von Parsedown.php
 // Wird genutzt um später Markdown in HTML umzuwandeln.
 // https://github.com/erusev/parsedown
 include_once("assets/vendors/parsedown/Parsedown.php");
