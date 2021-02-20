@@ -1,14 +1,20 @@
 <?php
 
+// functions.php einbinden
 include_once("functions.php");
 
+// falls GET-Parameter "open" existiert
+// Also bei z.B. domain.com/OPEN/xy
 if(isset($_GET['open'])) {
 
     $redirects = file_get_contents("./usercontent/config/redirects.conf");
 
+    // Falls es diesen Open-Link gibt, dann...
     if($redirectURL = getConfig($_GET['open'], $redirects)) {
+        // ... wird man zu dem verknüpften Link weitergeleitet
         header("Location: " . $redirectURL);
     } else {
+        // falls nicht, wird man zur Startseite weitergeleitet
         header("Location: " . ROOT);
     }
 
@@ -17,10 +23,12 @@ if(isset($_GET['open'])) {
 
 
 
-
+// Speichert Datei-Ordner und Datei-Name vom angeforderten Dokument
 $preparedFileName = null;
 $preparedFileFolder = null;
 
+// falls GET-Parameter "fixedpage" existiert
+// Also bei z.B. domain.com/mywork, domain.com/contact, domain.com/legal-notice ODER domain.com/privary-policy
 if(isset($_GET['fixedpage'])) {
 
     $fixedPages = array("contact", "mywork", "privacy-policy", "legal-notice");
@@ -28,58 +36,74 @@ if(isset($_GET['fixedpage'])) {
     $requestedPage = strtolower($_GET['fixedpage']);
 
     if (in_array($requestedPage, $fixedPages)) {
+        // Wenn eine valide "fixedpage" angefordert wurde:
 
-        $preparedFileName = $requestedPage.".md";
+        // ... wird Datei-Ordner und Datei-Name vom angeforderten Dokument gespeichert
+        $preparedFileName = $requestedPage . ".md";
         $preparedFileFolder = "fixedpages";
 
     } else {
 
+        // falls nicht, wird man zur Startseite weitergeleitet
         header("Location: " . ROOT);
 
     }
 
+// falls GET-Parameter "custompage" existiert
+// Also bei z.B. domain.com/PAGE/xy
 } elseif (isset($_GET['custompage'])) {
 
+    // Datei-Ordner und Datei-Name vom angeforderten Dokument gespeichert
     $preparedFileName = $_GET['custompage'].".md";
     $preparedFileFolder = "pages";
 
+    // .. falls diese Datei aber nicht existieren sollte ...
     if(!file_exists("./usercontent/".$preparedFileFolder."/".$preparedFileName)) {
 
+        // ... wird man zur Startseite weitergeleitet
         header("Location: " . ROOT);
 
     }
 
+// falls GET-Parameter "customproject" existiert
+// Also bei z.B. domain.com/PROJECT/xy
 } elseif (isset($_GET['customproject'])) {
 
+    // Datei-Ordner und Datei-Name vom angeforderten Dokument gespeichert
     $preparedFileName = $_GET['customproject'].".md";
     $preparedFileFolder = "projects";
 
+    // .. falls diese Datei aber nicht existieren sollte ...
     if(!file_exists("./usercontent/".$preparedFileFolder."/".$preparedFileName)) {
 
+        // ... wird man zur Startseite weitergeleitet
         header("Location: " . ROOT);
 
     }
 
 }
 
+// Falls keine obigen GET-Parameter existieren, und die beiden unteren Variablen immer noch = null sind...
 if($preparedFileName === null || $preparedFileFolder === null) {
+    // ... dann wird die Startseite angefordert
     $preparedFileName = "home.md";
     $preparedFileFolder = "fixedpages";
 }
 
+// angefordertes Dokument wird geöffnet
 openPage($preparedFileFolder, $preparedFileName);
 
+// Meta-Daten werden ausgelesen
+$pageType = $meta['Type']; // Seitentyp
+$pageTitle = $meta['Title']; // Seitentitel
 
-$pageType = $meta['Type'];
-$pageTitle = $meta['Title'];
+// Config-Daten werden ausgelesen
+$headTitle = getConfigValue("headtitle"); // Webseitentitel, welcher im Browser-Tab-Titel stehen wird
 
-$headTitle = getConfigValue("headtitle");
-
+// Falls nicht die Startseite aufgerufen wird, wird der Titel des Dokumentes an den Webseitentitel hinzugefügt
 $pageTitleMeta = $headTitle;
 if($pageType != "home") {
-
     $pageTitleMeta = $headTitle . " — " . $pageTitle;
-
 }
 
 ?>
@@ -88,9 +112,11 @@ if($pageType != "home") {
 <html lang="de">
 
     <head>
+
+        <!-- Html Metadaten: Charset, Viewport, Icons, Stylesheet und Title -->
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-
 
         <!-- Favicons: https://www.emergeinteractive.com/insights/detail/the-essentials-of-favicons/ -->
 
@@ -108,9 +134,6 @@ if($pageType != "home") {
         <link rel="apple-touch-icon" href="<?=ROOT?>usercontent/fixedlogos/favicons/favicon-152.png" sizes="152x152">
         <link rel="apple-touch-icon" href="<?=ROOT?>usercontent/fixedlogos/favicons/favicon-180.png" sizes="180x180">
 
-
-
-
         <link rel="stylesheet" type="text/css" href="<?=ROOT?>assets/style/app.css"/>
         <title><?=$pageTitleMeta?></title>
 
@@ -118,9 +141,13 @@ if($pageType != "home") {
 
     <body class="page--<?=$pageType?>">
 
+        <!-- Header-Template aufrufen -->
         <?php include_once("components/header.php"); ?>
 
+        <!-- Body-Template aufrufen -->
         <?php
+
+        // Je nach Seitentyp, wird ein anderes Template aufgerufen
 
         if($pageType == "home") {
             include_once("templates/home.php");
@@ -134,11 +161,8 @@ if($pageType != "home") {
 
         ?>
 
-
+        <!-- Footer-Template aufrufen -->
         <?php include_once("components/footer.php"); ?>
-
-
-
 
     </body>
 </html>

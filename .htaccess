@@ -9,12 +9,11 @@ RewriteRule contact ./index.php?fixedpage=contact [NC,L]
 RewriteRule privacy-policy ./index.php?fixedpage=privacy-policy [NC,L]
 RewriteRule legal-notice ./index.php?fixedpage=legal-notice [NC,L]
 
-
-# Rewrite/Overwrite for assets
+# Rewrite/Overwrite for assets-access
 RewriteRule ^page/assets/(.*)$ ./assets/$1 [NC,L]
 RewriteRule ^project/assets/(.*)$ ./assets/$1 [NC,L]
 
-# Rewrite/Overwrite for usercontent
+# Rewrite/Overwrite for usercontent-access
 RewriteRule ^page/usercontent/(.*)$ ./usercontent/$1 [NC,L]
 RewriteRule ^project/usercontent/(.*)$ ./usercontent/$1 [NC,L]
 
@@ -22,9 +21,8 @@ RewriteRule ^project/usercontent/(.*)$ ./usercontent/$1 [NC,L]
 RewriteRule ^page/(.*)$ ./index.php?custompage=$1 [NC,L]
 RewriteRule ^project/(.*)$ ./index.php?customproject=$1 [NC,L]
 
-# Redirects
+# /open/-Redirects
 RewriteRule ^open/(.*)$ ./index.php?open=$1 [NC,L]
-
 
 # Zugriff auf Markdown und Config Dateien verweigern
 <FilesMatch "\.(md|conf)$">
