@@ -7,8 +7,6 @@
 
 ## Stack
 
-Es handelt sich hier um eine **XAP**-Stack Applikation.
-
 - X: Crossplatform (Windows, Linux, macOS, etc)
 - A: Apache2 (PHP aktiviert)
 - P: PHP (MySQLi aktiviert)
