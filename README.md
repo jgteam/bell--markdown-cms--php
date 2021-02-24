@@ -7,9 +7,8 @@
 
 ## Stack
 
-- X: Crossplatform (Windows, Linux, macOS, etc)
-- A: Apache2 (PHP aktiviert)
-- P: PHP (MySQLi aktiviert)
+- Apache2 (PHP aktiviert)
+- PHP (MySQLi aktiviert)
 
 Weitere Software, welche zum Einsatz kommt:
 
