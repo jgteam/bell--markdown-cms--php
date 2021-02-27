@@ -14,11 +14,6 @@ Weitere Software, welche zum Einsatz kommt:
 
 - Parsedown
 
-## Installation
-
-
-
-## Benutzung 
-
-
+## Vorbereitung
+Trage deine StammURL, über welche die Applikation erreichbar sein wird, in der Konfigurationsdatei unter `ROOT` ein. Die Konfigurationsdatei findest du unter `usercontent/config.conf`.
 
