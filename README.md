@@ -15,5 +15,8 @@ Weitere Software, welche zum Einsatz kommt:
 - Parsedown
 
 ## Vorbereitung
-Trage deine StammURL, über welche die Applikation erreichbar sein wird, in der Konfigurationsdatei unter `ROOT` ein. Die Konfigurationsdatei findest du unter `usercontent/config.conf`.
+Trage deine StammURL, über welche die Applikation erreichbar sein wird, in der Konfigurationsdatei unter `ROOT` ein. Die Konfigurationsdatei findest du unter `usercontent/config/config.conf`.
 
+
+## Weitere Schritte
+Rufe über die StammURL deine Seite auf. Du wirst auf der Startseite und im Header einen Link zur README-Seite finden. Auf dieser erfährst du, wie du deine neue Webseite pflegen kannst.
